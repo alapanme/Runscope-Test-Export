@@ -1,0 +1,1890 @@
+[ 
+    {
+        "trigger_url": "https://api.runscope.com/radar/ceae5f4b-e5aa-4a63-ad38-d8752aaa654f/trigger", 
+        "name": "Successful Delete Project By Id Response Time <1000 ms", 
+        "version": "1.0", 
+        "exported_at": 1575567199, 
+        "steps": [
+            {
+                "skipped": false, 
+                "bucket_key": "0p9t7273xmp5", 
+                "trigger_token": null, 
+                "step_type": "subtest", 
+                "variables": [
+                    {
+                        "source": "response_json", 
+                        "property": "variables.emailFromResponse", 
+                        "name": "userEmail"
+                    }, 
+                    {
+                        "source": "response_json", 
+                        "property": "variables.passwordFromRequest", 
+                        "name": "userPassword"
+                    }
+                ], 
+                "environment_uuid": "", 
+                "use_parent_environment": true, 
+                "note": "", 
+                "params": [], 
+                "assertions": [
+                    {
+                        "comparison": "equal", 
+                        "property": "result", 
+                        "value": "pass", 
+                        "source": "response_json"
+                    }
+                ], 
+                "scripts": [], 
+                "before_scripts": [], 
+                "test_uuid": "7df1d82b-0cf2-4259-a101-e78bcd411234"
+            }, 
+            {
+                "body": "{\r\n\"Content\":\"{{projectName}}\",\r\n\"Icon\":4\r\n}", 
+                "skipped": false, 
+                "form": {}, 
+                "headers": {}, 
+                "url": "{{baseUrl}}projects.json", 
+                "variables": [], 
+                "args": {}, 
+                "step_type": "request", 
+                "auth": {
+                    "username": "{{userEmail}}", 
+                    "auth_type": "basic", 
+                    "password": "{{userPassword}}"
+                }, 
+                "auth.password": "{{userPassword}}", 
+                "note": "", 
+                "multipart_form": [], 
+                "auth.username": "{{userEmail}}", 
+                "scripts": [
+                    "var data = JSON.parse(response.body);\nvariables.set(\"idFromResponse\", data.Id);"
+                ], 
+                "before_scripts": [], 
+                "data": "", 
+                "method": "POST", 
+                "assertions": [
+                    {
+                        "comparison": "equal_number", 
+                        "value": 200, 
+                        "source": "response_status"
+                    }, 
+                    {
+                        "comparison": "is_a_number", 
+                        "property": "Id", 
+                        "value": null, 
+                        "source": "response_json"
+                    }, 
+                    {
+                        "comparison": "equal", 
+                        "property": "Icon", 
+                        "value": "4", 
+                        "source": "response_json"
+                    }, 
+                    {
+                        "comparison": "equal", 
+                        "property": "Content", 
+                        "value": "{{projectName}}", 
+                        "source": "response_json"
+                    }
+                ]
+            }, 
+            {
+                "body": "", 
+                "skipped": false, 
+                "form": {}, 
+                "url": "{{baseUrl}}projects/{{idFromResponse}}.json", 
+                "variables": [], 
+                "multipart_form": [], 
+                "step_type": "request", 
+                "auth.password": "{{userPassword}}", 
+                "note": "", 
+                "headers": {}, 
+                "assertions": [
+                    {
+                        "comparison": "equal_number", 
+                        "value": 200, 
+                        "source": "response_status"
+                    }, 
+                    {
+                        "comparison": "contains", 
+                        "property": "Id", 
+                        "value": "{{idFromResponse}}", 
+                        "source": "response_json"
+                    }, 
+                    {
+                        "comparison": "equal", 
+                        "property": "Content", 
+                        "value": "{{projectName}}", 
+                        "source": "response_json"
+                    }, 
+                    {
+                        "comparison": "is_less_than", 
+                        "value": "1000", 
+                        "source": "response_time"
+                    }
+                ], 
+                "scripts": [
+                    ""
+                ], 
+                "before_scripts": [], 
+                "auth": {
+                    "username": "{{userEmail}}", 
+                    "auth_type": "basic", 
+                    "password": "{{userPassword}}"
+                }, 
+                "method": "DELETE", 
+                "auth.username": "{{userEmail}}"
+            }
+        ], 
+        "description": ""
+    }, 
+    {
+        "trigger_url": "https://api.runscope.com/radar/c109d651-9744-4e91-a8b4-7a75cd1309e9/trigger", 
+        "name": "Successful Update Project By Id Response Time <1000 ms", 
+        "version": "1.0", 
+        "exported_at": 1575567199, 
+        "steps": [
+            {
+                "skipped": false, 
+                "bucket_key": "0p9t7273xmp5", 
+                "trigger_token": null, 
+                "step_type": "subtest", 
+                "variables": [
+                    {
+                        "source": "response_json", 
+                        "property": "variables.emailFromResponse", 
+                        "name": "userEmail"
+                    }, 
+                    {
+                        "source": "response_json", 
+                        "property": "variables.passwordFromRequest", 
+                        "name": "userPassword"
+                    }
+                ], 
+                "environment_uuid": "", 
+                "use_parent_environment": true, 
+                "note": "", 
+                "params": [], 
+                "assertions": [
+                    {
+                        "comparison": "equal", 
+                        "property": "result", 
+                        "value": "pass", 
+                        "source": "response_json"
+                    }
+                ], 
+                "scripts": [], 
+                "before_scripts": [], 
+                "test_uuid": "7df1d82b-0cf2-4259-a101-e78bcd411234"
+            }, 
+            {
+                "body": "{\r\n\"Content\":\"{{projectName}}\",\r\n\"Icon\":4\r\n}", 
+                "skipped": false, 
+                "form": {}, 
+                "headers": {}, 
+                "url": "{{baseUrl}}projects.json", 
+                "variables": [], 
+                "args": {}, 
+                "step_type": "request", 
+                "auth": {
+                    "username": "{{userEmail}}", 
+                    "auth_type": "basic", 
+                    "password": "{{userPassword}}"
+                }, 
+                "auth.password": "{{userPassword}}", 
+                "note": "", 
+                "multipart_form": [], 
+                "auth.username": "{{userEmail}}", 
+                "scripts": [
+                    "var data = JSON.parse(response.body);\nvariables.set(\"projectIdFromResponse\", data.Id);"
+                ], 
+                "before_scripts": [], 
+                "data": "", 
+                "method": "POST", 
+                "assertions": [
+                    {
+                        "comparison": "equal_number", 
+                        "value": 200, 
+                        "source": "response_status"
+                    }, 
+                    {
+                        "comparison": "is_a_number", 
+                        "property": "Id", 
+                        "value": null, 
+                        "source": "response_json"
+                    }, 
+                    {
+                        "comparison": "equal", 
+                        "property": "Icon", 
+                        "value": "4", 
+                        "source": "response_json"
+                    }, 
+                    {
+                        "comparison": "equal", 
+                        "property": "Content", 
+                        "value": "{{projectName}}", 
+                        "source": "response_json"
+                    }
+                ]
+            }, 
+            {
+                "body": "{\r\n\"Icon\":\"1382\",\r\n}", 
+                "skipped": false, 
+                "form": {}, 
+                "url": "{{baseUrl}}projects/{{projectIdFromResponse}}.json", 
+                "variables": [], 
+                "multipart_form": [], 
+                "step_type": "request", 
+                "auth.password": "{{userPassword}}", 
+                "note": "", 
+                "headers": {}, 
+                "assertions": [
+                    {
+                        "comparison": "equal_number", 
+                        "value": 200, 
+                        "source": "response_status"
+                    }, 
+                    {
+                        "comparison": "contains", 
+                        "property": "Icon", 
+                        "value": "1382", 
+                        "source": "response_json"
+                    }, 
+                    {
+                        "comparison": "contains", 
+                        "property": "Content", 
+                        "value": "{{projectName}}", 
+                        "source": "response_json"
+                    }, 
+                    {
+                        "comparison": "is_less_than", 
+                        "value": "1000", 
+                        "source": "response_time"
+                    }
+                ], 
+                "scripts": [
+                    ""
+                ], 
+                "before_scripts": [], 
+                "auth": {
+                    "username": "{{userEmail}}", 
+                    "auth_type": "basic", 
+                    "password": "{{userPassword}}"
+                }, 
+                "method": "POST", 
+                "auth.username": "{{userEmail}}"
+            }
+        ], 
+        "description": ""
+    }, 
+    {
+        "trigger_url": "https://api.runscope.com/radar/75424d57-1ea1-44d3-a1f2-1ac0d49486f2/trigger", 
+        "name": "Successful Create Project Response Time <1000 ms", 
+        "version": "1.0", 
+        "exported_at": 1575567199, 
+        "steps": [
+            {
+                "skipped": false, 
+                "bucket_key": "0p9t7273xmp5", 
+                "trigger_token": null, 
+                "step_type": "subtest", 
+                "variables": [
+                    {
+                        "source": "response_json", 
+                        "property": "variables.emailFromResponse", 
+                        "name": "userEmail"
+                    }, 
+                    {
+                        "source": "response_json", 
+                        "property": "variables.passwordFromRequest", 
+                        "name": "userPassword"
+                    }
+                ], 
+                "environment_uuid": "", 
+                "use_parent_environment": true, 
+                "note": "", 
+                "params": [], 
+                "assertions": [
+                    {
+                        "comparison": "equal", 
+                        "property": "result", 
+                        "value": "pass", 
+                        "source": "response_json"
+                    }
+                ], 
+                "scripts": [], 
+                "before_scripts": [], 
+                "test_uuid": "7df1d82b-0cf2-4259-a101-e78bcd411234"
+            }, 
+            {
+                "body": "{\r\n\"Content\": \"{{projectName}}\",\r\n\"Icon\": 4\r\n}", 
+                "skipped": false, 
+                "form": {}, 
+                "headers": {}, 
+                "url": "{{baseUrl}}projects.json", 
+                "variables": [], 
+                "args": {}, 
+                "step_type": "request", 
+                "auth": {
+                    "username": "{{userEmail}}", 
+                    "auth_type": "basic", 
+                    "password": "{{userPassword}}"
+                }, 
+                "auth.password": "{{userPassword}}", 
+                "note": "", 
+                "multipart_form": [], 
+                "auth.username": "{{userEmail}}", 
+                "scripts": [], 
+                "before_scripts": [], 
+                "data": "", 
+                "method": "POST", 
+                "assertions": [
+                    {
+                        "comparison": "equal_number", 
+                        "value": 200, 
+                        "source": "response_status"
+                    }, 
+                    {
+                        "comparison": "is_a_number", 
+                        "property": "Id", 
+                        "value": null, 
+                        "source": "response_json"
+                    }, 
+                    {
+                        "comparison": "equal", 
+                        "property": "Icon", 
+                        "value": "4", 
+                        "source": "response_json"
+                    }, 
+                    {
+                        "comparison": "equal", 
+                        "property": "Content", 
+                        "value": "{{projectName}}", 
+                        "source": "response_json"
+                    }, 
+                    {
+                        "comparison": "is_less_than", 
+                        "value": "1000", 
+                        "source": "response_time"
+                    }
+                ]
+            }
+        ], 
+        "description": ""
+    }, 
+    {
+        "trigger_url": "https://api.runscope.com/radar/148f0bcf-64fe-45ea-aed1-b0ed957065ba/trigger", 
+        "name": "Successful Get Project By ID Response Time <1000 ms", 
+        "version": "1.0", 
+        "exported_at": 1575567199, 
+        "steps": [
+            {
+                "skipped": false, 
+                "bucket_key": "0p9t7273xmp5", 
+                "trigger_token": null, 
+                "step_type": "subtest", 
+                "variables": [
+                    {
+                        "source": "response_json", 
+                        "property": "variables.emailFromResponse", 
+                        "name": "userEmail"
+                    }, 
+                    {
+                        "source": "response_json", 
+                        "property": "variables.passwordFromRequest", 
+                        "name": "userPassword"
+                    }
+                ], 
+                "environment_uuid": "", 
+                "use_parent_environment": true, 
+                "note": "", 
+                "params": [], 
+                "assertions": [
+                    {
+                        "comparison": "equal", 
+                        "property": "result", 
+                        "value": "pass", 
+                        "source": "response_json"
+                    }
+                ], 
+                "scripts": [], 
+                "before_scripts": [], 
+                "test_uuid": "7df1d82b-0cf2-4259-a101-e78bcd411234"
+            }, 
+            {
+                "body": "{\r\n\"Content\":\"{{projectName}}\",\r\n\"Icon\":4\r\n}", 
+                "skipped": false, 
+                "form": {}, 
+                "headers": {}, 
+                "url": "{{baseUrl}}projects.json", 
+                "variables": [], 
+                "args": {}, 
+                "step_type": "request", 
+                "auth": {
+                    "username": "{{userEmail}}", 
+                    "auth_type": "basic", 
+                    "password": "{{userPassword}}"
+                }, 
+                "auth.password": "{{userPassword}}", 
+                "note": "", 
+                "multipart_form": [], 
+                "auth.username": "{{userEmail}}", 
+                "scripts": [
+                    "var data = JSON.parse(response.body);\nvariables.set(\"idFromResponse\", data.Id);"
+                ], 
+                "before_scripts": [], 
+                "data": "", 
+                "method": "POST", 
+                "assertions": [
+                    {
+                        "comparison": "equal_number", 
+                        "value": 200, 
+                        "source": "response_status"
+                    }, 
+                    {
+                        "comparison": "is_a_number", 
+                        "property": "Id", 
+                        "value": null, 
+                        "source": "response_json"
+                    }, 
+                    {
+                        "comparison": "equal", 
+                        "property": "Icon", 
+                        "value": "4", 
+                        "source": "response_json"
+                    }, 
+                    {
+                        "comparison": "equal", 
+                        "property": "Content", 
+                        "value": "{{projectName}}", 
+                        "source": "response_json"
+                    }
+                ]
+            }, 
+            {
+                "skipped": false, 
+                "url": "{{baseUrl}}projects/{{idFromResponse}}.json", 
+                "variables": [], 
+                "multipart_form": [], 
+                "step_type": "request", 
+                "auth.password": "{{userPassword}}", 
+                "note": "", 
+                "headers": {}, 
+                "assertions": [
+                    {
+                        "comparison": "equal_number", 
+                        "value": 200, 
+                        "source": "response_status"
+                    }, 
+                    {
+                        "comparison": "contains", 
+                        "property": "Id", 
+                        "value": "{{idFromResponse}}", 
+                        "source": "response_json"
+                    }, 
+                    {
+                        "comparison": "equal", 
+                        "property": "Content", 
+                        "value": "{{projectName}}", 
+                        "source": "response_json"
+                    }, 
+                    {
+                        "comparison": "is_less_than", 
+                        "value": "1000", 
+                        "source": "response_time"
+                    }
+                ], 
+                "scripts": [
+                    ""
+                ], 
+                "before_scripts": [], 
+                "auth": {
+                    "username": "{{userEmail}}", 
+                    "auth_type": "basic", 
+                    "password": "{{userPassword}}"
+                }, 
+                "method": "GET", 
+                "auth.username": "{{userEmail}}"
+            }
+        ], 
+        "description": ""
+    }, 
+    {
+        "trigger_url": "https://api.runscope.com/radar/1239ebe8-c493-473f-894f-30144ec45429/trigger", 
+        "name": "Update Project By Id - 200 Successful", 
+        "version": "1.0", 
+        "exported_at": 1575567199, 
+        "steps": [
+            {
+                "skipped": false, 
+                "bucket_key": "0p9t7273xmp5", 
+                "trigger_token": null, 
+                "step_type": "subtest", 
+                "variables": [
+                    {
+                        "source": "response_json", 
+                        "property": "variables.emailFromResponse", 
+                        "name": "userEmail"
+                    }, 
+                    {
+                        "source": "response_json", 
+                        "property": "variables.passwordFromRequest", 
+                        "name": "userPassword"
+                    }
+                ], 
+                "environment_uuid": "", 
+                "use_parent_environment": true, 
+                "note": "", 
+                "params": [], 
+                "assertions": [
+                    {
+                        "comparison": "equal", 
+                        "property": "result", 
+                        "value": "pass", 
+                        "source": "response_json"
+                    }
+                ], 
+                "scripts": [], 
+                "before_scripts": [], 
+                "test_uuid": "7df1d82b-0cf2-4259-a101-e78bcd411234"
+            }, 
+            {
+                "body": "{\r\n\"Content\":\"{{projectName}}\",\r\n\"Icon\":4\r\n}", 
+                "skipped": false, 
+                "form": {}, 
+                "headers": {}, 
+                "url": "{{baseUrl}}projects.json", 
+                "variables": [], 
+                "args": {}, 
+                "step_type": "request", 
+                "auth": {
+                    "username": "{{userEmail}}", 
+                    "auth_type": "basic", 
+                    "password": "{{userPassword}}"
+                }, 
+                "auth.password": "{{userPassword}}", 
+                "note": "", 
+                "multipart_form": [], 
+                "auth.username": "{{userEmail}}", 
+                "scripts": [
+                    "var data = JSON.parse(response.body);\nvariables.set(\"projectIdFromResponse\", data.Id);"
+                ], 
+                "before_scripts": [], 
+                "data": "", 
+                "method": "POST", 
+                "assertions": [
+                    {
+                        "comparison": "equal_number", 
+                        "value": 200, 
+                        "source": "response_status"
+                    }, 
+                    {
+                        "comparison": "is_a_number", 
+                        "property": "Id", 
+                        "value": null, 
+                        "source": "response_json"
+                    }, 
+                    {
+                        "comparison": "equal", 
+                        "property": "Icon", 
+                        "value": "4", 
+                        "source": "response_json"
+                    }, 
+                    {
+                        "comparison": "equal", 
+                        "property": "Content", 
+                        "value": "{{projectName}}", 
+                        "source": "response_json"
+                    }
+                ]
+            }, 
+            {
+                "body": "{\r\n\"Icon\":\"1382\",\r\n}", 
+                "skipped": false, 
+                "form": {}, 
+                "url": "{{baseUrl}}projects/{{projectIdFromResponse}}.json", 
+                "variables": [], 
+                "multipart_form": [], 
+                "step_type": "request", 
+                "auth.password": "{{userPassword}}", 
+                "note": "", 
+                "headers": {}, 
+                "assertions": [
+                    {
+                        "comparison": "equal_number", 
+                        "value": 200, 
+                        "source": "response_status"
+                    }, 
+                    {
+                        "comparison": "contains", 
+                        "property": "Icon", 
+                        "value": "1382", 
+                        "source": "response_json"
+                    }, 
+                    {
+                        "comparison": "contains", 
+                        "property": "Content", 
+                        "value": "{{projectName}}", 
+                        "source": "response_json"
+                    }
+                ], 
+                "scripts": [
+                    ""
+                ], 
+                "before_scripts": [], 
+                "auth": {
+                    "username": "{{userEmail}}", 
+                    "auth_type": "basic", 
+                    "password": "{{userPassword}}"
+                }, 
+                "method": "POST", 
+                "auth.username": "{{userEmail}}"
+            }, 
+            {
+                "skipped": false, 
+                "url": "{{baseUrl}}projects.json", 
+                "variables": [], 
+                "multipart_form": [], 
+                "step_type": "request", 
+                "auth.password": "{{userPassword}}", 
+                "note": "", 
+                "headers": {}, 
+                "assertions": [
+                    {
+                        "comparison": "equal_number", 
+                        "value": 200, 
+                        "source": "response_status"
+                    }, 
+                    {
+                        "comparison": "contains", 
+                        "value": "Work", 
+                        "source": "response_text"
+                    }, 
+                    {
+                        "comparison": "contains", 
+                        "value": "Study", 
+                        "source": "response_text"
+                    }, 
+                    {
+                        "comparison": "contains", 
+                        "value": "Home", 
+                        "source": "response_text"
+                    }, 
+                    {
+                        "comparison": "contains", 
+                        "value": "Personal", 
+                        "source": "response_text"
+                    }, 
+                    {
+                        "comparison": "contains", 
+                        "value": "1382", 
+                        "source": "response_text"
+                    }
+                ], 
+                "scripts": [
+                    ""
+                ], 
+                "before_scripts": [], 
+                "auth": {
+                    "username": "{{userEmail}}", 
+                    "auth_type": "basic", 
+                    "password": "{{userPassword}}"
+                }, 
+                "method": "GET", 
+                "auth.username": "{{userEmail}}"
+            }
+        ], 
+        "description": ""
+    }, 
+    {
+        "trigger_url": "https://api.runscope.com/radar/725c35c6-6809-4e48-9a1d-43c3d5b42fd2/trigger", 
+        "name": "Delete Project By ID - 105 Account doesn't exist", 
+        "version": "1.0", 
+        "exported_at": 1575567199, 
+        "steps": [
+            {
+                "skipped": false, 
+                "bucket_key": "0p9t7273xmp5", 
+                "trigger_token": null, 
+                "step_type": "subtest", 
+                "variables": [
+                    {
+                        "source": "response_json", 
+                        "property": "variables.emailFromResponse", 
+                        "name": "userEmail"
+                    }, 
+                    {
+                        "source": "response_json", 
+                        "property": "variables.passwordFromRequest", 
+                        "name": "userPassword"
+                    }
+                ], 
+                "environment_uuid": "", 
+                "use_parent_environment": true, 
+                "note": "", 
+                "params": [], 
+                "assertions": [
+                    {
+                        "comparison": "equal", 
+                        "property": "result", 
+                        "value": "pass", 
+                        "source": "response_json"
+                    }
+                ], 
+                "scripts": [], 
+                "before_scripts": [], 
+                "test_uuid": "7df1d82b-0cf2-4259-a101-e78bcd411234"
+            }, 
+            {
+                "body": "{\r\n\"Content\":\"{{projectName}}\",\r\n\"Icon\":4\r\n}", 
+                "skipped": false, 
+                "form": {}, 
+                "headers": {}, 
+                "url": "{{baseUrl}}projects.json", 
+                "variables": [], 
+                "args": {}, 
+                "step_type": "request", 
+                "auth": {
+                    "username": "{{userEmail}}", 
+                    "auth_type": "basic", 
+                    "password": "{{userPassword}}"
+                }, 
+                "auth.password": "{{userPassword}}", 
+                "note": "", 
+                "multipart_form": [], 
+                "auth.username": "{{userEmail}}", 
+                "scripts": [
+                    "var data = JSON.parse(response.body);\nvariables.set(\"idFromResponse\", data.Id);"
+                ], 
+                "before_scripts": [], 
+                "data": "", 
+                "method": "POST", 
+                "assertions": [
+                    {
+                        "comparison": "equal_number", 
+                        "value": 200, 
+                        "source": "response_status"
+                    }, 
+                    {
+                        "comparison": "is_a_number", 
+                        "property": "Id", 
+                        "value": null, 
+                        "source": "response_json"
+                    }, 
+                    {
+                        "comparison": "equal", 
+                        "property": "Icon", 
+                        "value": "4", 
+                        "source": "response_json"
+                    }, 
+                    {
+                        "comparison": "equal", 
+                        "property": "Content", 
+                        "value": "{{projectName}}", 
+                        "source": "response_json"
+                    }
+                ]
+            }, 
+            {
+                "body": "", 
+                "skipped": false, 
+                "form": {}, 
+                "url": "{{baseUrl}}projects/{{idFromResponse}}.json", 
+                "variables": [], 
+                "multipart_form": [], 
+                "step_type": "request", 
+                "auth": {
+                    "username": "hell@test.com", 
+                    "auth_type": "basic", 
+                    "password": "12345678"
+                }, 
+                "note": "", 
+                "headers": {}, 
+                "assertions": [
+                    {
+                        "comparison": "equal_number", 
+                        "value": 200, 
+                        "source": "response_status"
+                    }, 
+                    {
+                        "comparison": "contains", 
+                        "property": "ErrorMessage", 
+                        "value": "Account doesn't exist", 
+                        "source": "response_json"
+                    }, 
+                    {
+                        "comparison": "equal", 
+                        "property": "ErrorCode", 
+                        "value": "105", 
+                        "source": "response_json"
+                    }
+                ], 
+                "scripts": [
+                    ""
+                ], 
+                "before_scripts": [], 
+                "method": "DELETE"
+            }
+        ], 
+        "description": ""
+    }, 
+    {
+        "trigger_url": "https://api.runscope.com/radar/e39d3d22-c1a2-41a7-bfe2-4420ee01afbd/trigger", 
+        "name": "Delete Project By ID - 301 Invalid Id", 
+        "version": "1.0", 
+        "exported_at": 1575567199, 
+        "steps": [
+            {
+                "skipped": false, 
+                "bucket_key": "0p9t7273xmp5", 
+                "trigger_token": null, 
+                "step_type": "subtest", 
+                "variables": [
+                    {
+                        "source": "response_json", 
+                        "property": "variables.emailFromResponse", 
+                        "name": "userEmail"
+                    }, 
+                    {
+                        "source": "response_json", 
+                        "property": "variables.passwordFromRequest", 
+                        "name": "userPassword"
+                    }
+                ], 
+                "environment_uuid": "", 
+                "use_parent_environment": true, 
+                "note": "", 
+                "params": [], 
+                "assertions": [
+                    {
+                        "comparison": "equal", 
+                        "property": "result", 
+                        "value": "pass", 
+                        "source": "response_json"
+                    }
+                ], 
+                "scripts": [], 
+                "before_scripts": [], 
+                "test_uuid": "7df1d82b-0cf2-4259-a101-e78bcd411234"
+            }, 
+            {
+                "body": "{\r\n\"Content\":\"{{projectName}}\",\r\n\"Icon\":4\r\n}", 
+                "skipped": false, 
+                "form": {}, 
+                "headers": {}, 
+                "url": "{{baseUrl}}projects.json", 
+                "variables": [], 
+                "args": {}, 
+                "step_type": "request", 
+                "auth": {
+                    "username": "{{userEmail}}", 
+                    "auth_type": "basic", 
+                    "password": "{{userPassword}}"
+                }, 
+                "auth.password": "{{userPassword}}", 
+                "note": "", 
+                "multipart_form": [], 
+                "auth.username": "{{userEmail}}", 
+                "scripts": [
+                    "var data = JSON.parse(response.body);\nvariables.set(\"idFromResponse\", data.Id);"
+                ], 
+                "before_scripts": [], 
+                "data": "", 
+                "method": "POST", 
+                "assertions": [
+                    {
+                        "comparison": "equal_number", 
+                        "value": 200, 
+                        "source": "response_status"
+                    }, 
+                    {
+                        "comparison": "is_a_number", 
+                        "property": "Id", 
+                        "value": null, 
+                        "source": "response_json"
+                    }, 
+                    {
+                        "comparison": "equal", 
+                        "property": "Icon", 
+                        "value": "4", 
+                        "source": "response_json"
+                    }, 
+                    {
+                        "comparison": "equal", 
+                        "property": "Content", 
+                        "value": "{{projectName}}", 
+                        "source": "response_json"
+                    }
+                ]
+            }, 
+            {
+                "body": "", 
+                "skipped": false, 
+                "form": {}, 
+                "url": "{{baseUrl}}projects/231312.json", 
+                "variables": [], 
+                "multipart_form": [], 
+                "step_type": "request", 
+                "auth.password": "{{userPassword}}", 
+                "note": "", 
+                "headers": {}, 
+                "assertions": [
+                    {
+                        "comparison": "equal_number", 
+                        "value": 200, 
+                        "source": "response_status"
+                    }, 
+                    {
+                        "comparison": "contains", 
+                        "property": "ErrorCode", 
+                        "value": "301", 
+                        "source": "response_json"
+                    }, 
+                    {
+                        "comparison": "equal", 
+                        "property": "ErrorMessage", 
+                        "value": "Invalid Id", 
+                        "source": "response_json"
+                    }
+                ], 
+                "scripts": [
+                    ""
+                ], 
+                "before_scripts": [], 
+                "auth": {
+                    "username": "{{userEmail}}", 
+                    "auth_type": "basic", 
+                    "password": "{{userPassword}}"
+                }, 
+                "method": "DELETE", 
+                "auth.username": "{{userEmail}}"
+            }
+        ], 
+        "description": ""
+    }, 
+    {
+        "trigger_url": "https://api.runscope.com/radar/d0b7cf7e-1867-4c69-8de5-a6dafc6f7154/trigger", 
+        "name": "Delete Project By ID - 200 Successful", 
+        "version": "1.0", 
+        "exported_at": 1575567199, 
+        "steps": [
+            {
+                "skipped": false, 
+                "bucket_key": "0p9t7273xmp5", 
+                "trigger_token": null, 
+                "step_type": "subtest", 
+                "variables": [
+                    {
+                        "source": "response_json", 
+                        "property": "variables.emailFromResponse", 
+                        "name": "userEmail"
+                    }, 
+                    {
+                        "source": "response_json", 
+                        "property": "variables.passwordFromRequest", 
+                        "name": "userPassword"
+                    }
+                ], 
+                "environment_uuid": "", 
+                "use_parent_environment": true, 
+                "note": "", 
+                "params": [], 
+                "assertions": [
+                    {
+                        "comparison": "equal", 
+                        "property": "result", 
+                        "value": "pass", 
+                        "source": "response_json"
+                    }
+                ], 
+                "scripts": [], 
+                "before_scripts": [], 
+                "test_uuid": "7df1d82b-0cf2-4259-a101-e78bcd411234"
+            }, 
+            {
+                "body": "{\r\n\"Content\":\"{{projectName}}\",\r\n\"Icon\":4\r\n}", 
+                "skipped": false, 
+                "form": {}, 
+                "headers": {}, 
+                "url": "{{baseUrl}}projects.json", 
+                "variables": [], 
+                "args": {}, 
+                "step_type": "request", 
+                "auth": {
+                    "username": "{{userEmail}}", 
+                    "auth_type": "basic", 
+                    "password": "{{userPassword}}"
+                }, 
+                "auth.password": "{{userPassword}}", 
+                "note": "", 
+                "multipart_form": [], 
+                "auth.username": "{{userEmail}}", 
+                "scripts": [
+                    "var data = JSON.parse(response.body);\nvariables.set(\"idFromResponse\", data.Id);"
+                ], 
+                "before_scripts": [], 
+                "data": "", 
+                "method": "POST", 
+                "assertions": [
+                    {
+                        "comparison": "equal_number", 
+                        "value": 200, 
+                        "source": "response_status"
+                    }, 
+                    {
+                        "comparison": "is_a_number", 
+                        "property": "Id", 
+                        "value": null, 
+                        "source": "response_json"
+                    }, 
+                    {
+                        "comparison": "equal", 
+                        "property": "Icon", 
+                        "value": "4", 
+                        "source": "response_json"
+                    }, 
+                    {
+                        "comparison": "equal", 
+                        "property": "Content", 
+                        "value": "{{projectName}}", 
+                        "source": "response_json"
+                    }
+                ]
+            }, 
+            {
+                "body": "", 
+                "skipped": false, 
+                "form": {}, 
+                "url": "{{baseUrl}}projects/{{idFromResponse}}.json", 
+                "variables": [], 
+                "multipart_form": [], 
+                "step_type": "request", 
+                "auth.password": "{{userPassword}}", 
+                "note": "", 
+                "headers": {}, 
+                "assertions": [
+                    {
+                        "comparison": "equal_number", 
+                        "value": 200, 
+                        "source": "response_status"
+                    }, 
+                    {
+                        "comparison": "contains", 
+                        "property": "Id", 
+                        "value": "{{idFromResponse}}", 
+                        "source": "response_json"
+                    }, 
+                    {
+                        "comparison": "equal", 
+                        "property": "Content", 
+                        "value": "{{projectName}}", 
+                        "source": "response_json"
+                    }
+                ], 
+                "scripts": [
+                    ""
+                ], 
+                "before_scripts": [], 
+                "auth": {
+                    "username": "{{userEmail}}", 
+                    "auth_type": "basic", 
+                    "password": "{{userPassword}}"
+                }, 
+                "method": "DELETE", 
+                "auth.username": "{{userEmail}}"
+            }, 
+            {
+                "skipped": false, 
+                "url": "{{baseUrl}}projects/{{idFromResponse}}.json", 
+                "variables": [], 
+                "multipart_form": [], 
+                "step_type": "request", 
+                "auth.password": "{{userPassword}}", 
+                "note": "", 
+                "headers": {}, 
+                "assertions": [
+                    {
+                        "comparison": "equal_number", 
+                        "value": 200, 
+                        "source": "response_status"
+                    }, 
+                    {
+                        "comparison": "empty", 
+                        "value": null, 
+                        "source": "response_text"
+                    }
+                ], 
+                "scripts": [
+                    ""
+                ], 
+                "before_scripts": [], 
+                "auth": {
+                    "username": "{{userEmail}}", 
+                    "auth_type": "basic", 
+                    "password": "{{userPassword}}"
+                }, 
+                "method": "GET", 
+                "auth.username": "{{userEmail}}"
+            }
+        ], 
+        "description": ""
+    }, 
+    {
+        "trigger_url": "https://api.runscope.com/radar/1706ed8c-584c-41ed-ae68-d5a74d9894d5/trigger", 
+        "name": "Get Project By ID - 105 Account doesn't exist", 
+        "version": "1.0", 
+        "exported_at": 1575567199, 
+        "steps": [
+            {
+                "skipped": false, 
+                "bucket_key": "0p9t7273xmp5", 
+                "trigger_token": null, 
+                "step_type": "subtest", 
+                "variables": [
+                    {
+                        "source": "response_json", 
+                        "property": "variables.emailFromResponse", 
+                        "name": "userEmail"
+                    }, 
+                    {
+                        "source": "response_json", 
+                        "property": "variables.passwordFromRequest", 
+                        "name": "userPassword"
+                    }
+                ], 
+                "environment_uuid": "", 
+                "use_parent_environment": true, 
+                "note": "", 
+                "params": [], 
+                "assertions": [
+                    {
+                        "comparison": "equal", 
+                        "property": "result", 
+                        "value": "pass", 
+                        "source": "response_json"
+                    }
+                ], 
+                "scripts": [], 
+                "before_scripts": [], 
+                "test_uuid": "7df1d82b-0cf2-4259-a101-e78bcd411234"
+            }, 
+            {
+                "body": "{\r\n\"Content\":\"{{projectName}}\",\r\n\"Icon\":4\r\n}", 
+                "skipped": false, 
+                "form": {}, 
+                "headers": {}, 
+                "url": "{{baseUrl}}projects.json", 
+                "variables": [], 
+                "args": {}, 
+                "step_type": "request", 
+                "auth": {
+                    "username": "{{userEmail}}", 
+                    "auth_type": "basic", 
+                    "password": "{{userPassword}}"
+                }, 
+                "auth.password": "{{userPassword}}", 
+                "note": "", 
+                "multipart_form": [], 
+                "auth.username": "{{userEmail}}", 
+                "scripts": [
+                    "var data = JSON.parse(response.body);\nvariables.set(\"idFromResponse\", data.Id);"
+                ], 
+                "before_scripts": [], 
+                "data": "", 
+                "method": "POST", 
+                "assertions": [
+                    {
+                        "comparison": "equal_number", 
+                        "value": 200, 
+                        "source": "response_status"
+                    }, 
+                    {
+                        "comparison": "is_a_number", 
+                        "property": "Id", 
+                        "value": null, 
+                        "source": "response_json"
+                    }, 
+                    {
+                        "comparison": "equal", 
+                        "property": "Icon", 
+                        "value": "4", 
+                        "source": "response_json"
+                    }, 
+                    {
+                        "comparison": "equal", 
+                        "property": "Content", 
+                        "value": "{{projectName}}", 
+                        "source": "response_json"
+                    }
+                ]
+            }, 
+            {
+                "skipped": false, 
+                "url": "{{baseUrl}}projects/{{idFromResponse}}.json", 
+                "variables": [], 
+                "multipart_form": [], 
+                "step_type": "request", 
+                "auth": {
+                    "username": "abcd@test.test", 
+                    "auth_type": "basic", 
+                    "password": "124124"
+                }, 
+                "note": "", 
+                "headers": {}, 
+                "assertions": [
+                    {
+                        "comparison": "equal_number", 
+                        "value": 200, 
+                        "source": "response_status"
+                    }, 
+                    {
+                        "comparison": "equal", 
+                        "property": "ErrorCode", 
+                        "value": "105", 
+                        "source": "response_json"
+                    }, 
+                    {
+                        "comparison": "equal", 
+                        "property": "ErrorMessage", 
+                        "value": "Account doesn't exist", 
+                        "source": "response_json"
+                    }
+                ], 
+                "scripts": [
+                    ""
+                ], 
+                "before_scripts": [], 
+                "method": "GET"
+            }
+        ], 
+        "description": ""
+    }, 
+    {
+        "trigger_url": "https://api.runscope.com/radar/891c71e1-c2ae-4361-ad90-b965e7507f8a/trigger", 
+        "name": "Get Project By ID - 402 No Access to Project", 
+        "version": "1.0", 
+        "exported_at": 1575567199, 
+        "steps": [
+            {
+                "skipped": false, 
+                "bucket_key": "0p9t7273xmp5", 
+                "trigger_token": null, 
+                "step_type": "subtest", 
+                "variables": [
+                    {
+                        "source": "response_json", 
+                        "property": "variables.emailFromResponse", 
+                        "name": "userEmail"
+                    }, 
+                    {
+                        "source": "response_json", 
+                        "property": "variables.passwordFromRequest", 
+                        "name": "userPassword"
+                    }
+                ], 
+                "environment_uuid": "", 
+                "use_parent_environment": true, 
+                "note": "", 
+                "params": [], 
+                "assertions": [
+                    {
+                        "comparison": "equal", 
+                        "property": "result", 
+                        "value": "pass", 
+                        "source": "response_json"
+                    }
+                ], 
+                "scripts": [], 
+                "before_scripts": [], 
+                "test_uuid": "7df1d82b-0cf2-4259-a101-e78bcd411234"
+            }, 
+            {
+                "skipped": false, 
+                "url": "{{baseUrl}}projects/12.json", 
+                "variables": [], 
+                "multipart_form": [], 
+                "step_type": "request", 
+                "auth.password": "{{userPassword}}", 
+                "note": "", 
+                "headers": {}, 
+                "assertions": [
+                    {
+                        "comparison": "equal_number", 
+                        "value": 200, 
+                        "source": "response_status"
+                    }, 
+                    {
+                        "comparison": "contains", 
+                        "property": "ErrorCode", 
+                        "value": "402", 
+                        "source": "response_json"
+                    }, 
+                    {
+                        "comparison": "equal", 
+                        "property": "ErrorMessage", 
+                        "value": "You don't have access to this Project", 
+                        "source": "response_json"
+                    }
+                ], 
+                "scripts": [
+                    ""
+                ], 
+                "before_scripts": [], 
+                "auth": {
+                    "username": "{{userEmail}}", 
+                    "auth_type": "basic", 
+                    "password": "{{userPassword}}"
+                }, 
+                "method": "GET", 
+                "auth.username": "{{userEmail}}"
+            }
+        ], 
+        "description": ""
+    }, 
+    {
+        "trigger_url": "https://api.runscope.com/radar/188c0101-baaf-4759-b793-4653f904f9ee/trigger", 
+        "name": "Get Project By ID - 200 Successful", 
+        "version": "1.0", 
+        "exported_at": 1575567199, 
+        "steps": [
+            {
+                "skipped": false, 
+                "bucket_key": "0p9t7273xmp5", 
+                "trigger_token": null, 
+                "step_type": "subtest", 
+                "variables": [
+                    {
+                        "source": "response_json", 
+                        "property": "variables.emailFromResponse", 
+                        "name": "userEmail"
+                    }, 
+                    {
+                        "source": "response_json", 
+                        "property": "variables.passwordFromRequest", 
+                        "name": "userPassword"
+                    }
+                ], 
+                "environment_uuid": "", 
+                "use_parent_environment": true, 
+                "note": "", 
+                "params": [], 
+                "assertions": [
+                    {
+                        "comparison": "equal", 
+                        "property": "result", 
+                        "value": "pass", 
+                        "source": "response_json"
+                    }
+                ], 
+                "scripts": [], 
+                "before_scripts": [], 
+                "test_uuid": "7df1d82b-0cf2-4259-a101-e78bcd411234"
+            }, 
+            {
+                "body": "{\r\n\"Content\":\"{{projectName}}\",\r\n\"Icon\":4\r\n}", 
+                "skipped": false, 
+                "form": {}, 
+                "headers": {}, 
+                "url": "{{baseUrl}}projects.json", 
+                "variables": [], 
+                "args": {}, 
+                "step_type": "request", 
+                "auth": {
+                    "username": "{{userEmail}}", 
+                    "auth_type": "basic", 
+                    "password": "{{userPassword}}"
+                }, 
+                "auth.password": "{{userPassword}}", 
+                "note": "", 
+                "multipart_form": [], 
+                "auth.username": "{{userEmail}}", 
+                "scripts": [
+                    "var data = JSON.parse(response.body);\nvariables.set(\"idFromResponse\", data.Id);"
+                ], 
+                "before_scripts": [], 
+                "data": "", 
+                "method": "POST", 
+                "assertions": [
+                    {
+                        "comparison": "equal_number", 
+                        "value": 200, 
+                        "source": "response_status"
+                    }, 
+                    {
+                        "comparison": "is_a_number", 
+                        "property": "Id", 
+                        "value": null, 
+                        "source": "response_json"
+                    }, 
+                    {
+                        "comparison": "equal", 
+                        "property": "Icon", 
+                        "value": "4", 
+                        "source": "response_json"
+                    }, 
+                    {
+                        "comparison": "equal", 
+                        "property": "Content", 
+                        "value": "{{projectName}}", 
+                        "source": "response_json"
+                    }
+                ]
+            }, 
+            {
+                "skipped": false, 
+                "url": "{{baseUrl}}projects/{{idFromResponse}}.json", 
+                "variables": [], 
+                "multipart_form": [], 
+                "step_type": "request", 
+                "auth.password": "{{userPassword}}", 
+                "note": "", 
+                "headers": {}, 
+                "assertions": [
+                    {
+                        "comparison": "equal_number", 
+                        "value": 200, 
+                        "source": "response_status"
+                    }, 
+                    {
+                        "comparison": "contains", 
+                        "property": "Id", 
+                        "value": "{{idFromResponse}}", 
+                        "source": "response_json"
+                    }, 
+                    {
+                        "comparison": "equal", 
+                        "property": "Content", 
+                        "value": "{{projectName}}", 
+                        "source": "response_json"
+                    }
+                ], 
+                "scripts": [
+                    ""
+                ], 
+                "before_scripts": [], 
+                "auth": {
+                    "username": "{{userEmail}}", 
+                    "auth_type": "basic", 
+                    "password": "{{userPassword}}"
+                }, 
+                "method": "GET", 
+                "auth.username": "{{userEmail}}"
+            }
+        ], 
+        "description": ""
+    }, 
+    {
+        "trigger_url": "https://api.runscope.com/radar/8631f224-b3c0-4c31-b082-79b8e96fe890/trigger", 
+        "name": "Get Project - 102 Not Authenticated", 
+        "version": "1.0", 
+        "exported_at": 1575567199, 
+        "steps": [
+            {
+                "skipped": false, 
+                "url": "{{baseUrl}}projects.json", 
+                "variables": [], 
+                "multipart_form": [], 
+                "step_type": "request", 
+                "auth": {
+                    "username": "", 
+                    "auth_type": "basic", 
+                    "password": ""
+                }, 
+                "note": "", 
+                "headers": {}, 
+                "assertions": [
+                    {
+                        "comparison": "equal_number", 
+                        "value": 200, 
+                        "source": "response_status"
+                    }, 
+                    {
+                        "comparison": "equal", 
+                        "property": "ErrorCode", 
+                        "value": "102", 
+                        "source": "response_json"
+                    }, 
+                    {
+                        "comparison": "equal", 
+                        "property": "ErrorMessage", 
+                        "value": "Not Authenticated", 
+                        "source": "response_json"
+                    }
+                ], 
+                "scripts": [
+                    ""
+                ], 
+                "before_scripts": [], 
+                "method": "GET"
+            }
+        ], 
+        "description": ""
+    }, 
+    {
+        "trigger_url": "https://api.runscope.com/radar/7f575e38-e8bd-4d47-b161-10fbc4416945/trigger", 
+        "name": "Get Project - 200 Successful", 
+        "version": "1.0", 
+        "exported_at": 1575567199, 
+        "steps": [
+            {
+                "skipped": false, 
+                "bucket_key": "0p9t7273xmp5", 
+                "trigger_token": null, 
+                "step_type": "subtest", 
+                "variables": [
+                    {
+                        "source": "response_json", 
+                        "property": "variables.emailFromResponse", 
+                        "name": "userEmail"
+                    }, 
+                    {
+                        "source": "response_json", 
+                        "property": "variables.passwordFromRequest", 
+                        "name": "userPassword"
+                    }
+                ], 
+                "environment_uuid": "", 
+                "use_parent_environment": true, 
+                "note": "", 
+                "params": [], 
+                "assertions": [
+                    {
+                        "comparison": "equal", 
+                        "property": "result", 
+                        "value": "pass", 
+                        "source": "response_json"
+                    }
+                ], 
+                "scripts": [], 
+                "before_scripts": [], 
+                "test_uuid": "7df1d82b-0cf2-4259-a101-e78bcd411234"
+            }, 
+            {
+                "body": "{\r\n\"Content\":\"{{projectName}}\",\r\n\"Icon\":4\r\n}", 
+                "skipped": false, 
+                "form": {}, 
+                "url": "{{baseUrl}}projects.json", 
+                "variables": [], 
+                "args": {}, 
+                "step_type": "request", 
+                "auth": {
+                    "username": "{{userEmail}}", 
+                    "auth_type": "basic", 
+                    "password": "{{userPassword}}"
+                }, 
+                "auth.password": "{{userPassword}}", 
+                "note": "", 
+                "headers": {}, 
+                "auth.username": "{{userEmail}}", 
+                "scripts": [], 
+                "multipart_form": [], 
+                "before_scripts": [], 
+                "data": "", 
+                "method": "POST", 
+                "assertions": [
+                    {
+                        "comparison": "equal_number", 
+                        "value": 200, 
+                        "source": "response_status"
+                    }, 
+                    {
+                        "comparison": "is_a_number", 
+                        "property": "Id", 
+                        "value": null, 
+                        "source": "response_json"
+                    }, 
+                    {
+                        "comparison": "equal", 
+                        "property": "Icon", 
+                        "value": "4", 
+                        "source": "response_json"
+                    }, 
+                    {
+                        "comparison": "equal", 
+                        "property": "Content", 
+                        "value": "{{projectName}}", 
+                        "source": "response_json"
+                    }
+                ]
+            }, 
+            {
+                "skipped": false, 
+                "url": "{{baseUrl}}projects.json", 
+                "variables": [], 
+                "multipart_form": [], 
+                "step_type": "request", 
+                "auth.password": "{{userPassword}}", 
+                "note": "", 
+                "headers": {}, 
+                "assertions": [
+                    {
+                        "comparison": "equal_number", 
+                        "value": 200, 
+                        "source": "response_status"
+                    }, 
+                    {
+                        "comparison": "contains", 
+                        "value": "Work", 
+                        "source": "response_text"
+                    }, 
+                    {
+                        "comparison": "contains", 
+                        "value": "Study", 
+                        "source": "response_text"
+                    }, 
+                    {
+                        "comparison": "contains", 
+                        "value": "Home", 
+                        "source": "response_text"
+                    }, 
+                    {
+                        "comparison": "contains", 
+                        "value": "Personal", 
+                        "source": "response_text"
+                    }, 
+                    {
+                        "comparison": "contains", 
+                        "value": "{{projectName}}", 
+                        "source": "response_text"
+                    }
+                ], 
+                "scripts": [
+                    ""
+                ], 
+                "before_scripts": [], 
+                "auth": {
+                    "username": "{{userEmail}}", 
+                    "auth_type": "basic", 
+                    "password": "{{userPassword}}"
+                }, 
+                "method": "GET", 
+                "auth.username": "{{userEmail}}"
+            }
+        ], 
+        "description": ""
+    }, 
+    {
+        "trigger_url": "https://api.runscope.com/radar/33d729e2-7bcb-4d55-a1d2-ce1b4b68d626/trigger", 
+        "name": "Create Project - 305 Too Short Project Name", 
+        "version": "1.0", 
+        "exported_at": 1575567199, 
+        "steps": [
+            {
+                "skipped": false, 
+                "bucket_key": "0p9t7273xmp5", 
+                "trigger_token": null, 
+                "step_type": "subtest", 
+                "variables": [
+                    {
+                        "source": "response_json", 
+                        "property": "variables.emailFromResponse", 
+                        "name": "userEmail"
+                    }, 
+                    {
+                        "source": "response_json", 
+                        "property": "variables.passwordFromRequest", 
+                        "name": "userPassword"
+                    }
+                ], 
+                "environment_uuid": "", 
+                "use_parent_environment": true, 
+                "note": "", 
+                "params": [], 
+                "assertions": [
+                    {
+                        "comparison": "equal", 
+                        "property": "result", 
+                        "value": "pass", 
+                        "source": "response_json"
+                    }
+                ], 
+                "scripts": [], 
+                "before_scripts": [], 
+                "test_uuid": "7df1d82b-0cf2-4259-a101-e78bcd411234"
+            }, 
+            {
+                "body": "{\r\n\"Content\":\"\"\r\n}", 
+                "skipped": false, 
+                "form": {}, 
+                "headers": {}, 
+                "url": "{{baseUrl}}projects.json", 
+                "variables": [], 
+                "args": {}, 
+                "step_type": "request", 
+                "auth": {
+                    "username": "{{userEmail}}", 
+                    "auth_type": "basic", 
+                    "password": "{{userPassword}}"
+                }, 
+                "auth.password": "{{userPassword}}", 
+                "note": "", 
+                "multipart_form": [], 
+                "auth.username": "{{userEmail}}", 
+                "scripts": [], 
+                "before_scripts": [], 
+                "data": "", 
+                "method": "POST", 
+                "assertions": [
+                    {
+                        "comparison": "equal_number", 
+                        "value": 200, 
+                        "source": "response_status"
+                    }, 
+                    {
+                        "comparison": "equal", 
+                        "property": "ErrorCode", 
+                        "value": "305", 
+                        "source": "response_json"
+                    }, 
+                    {
+                        "comparison": "equal", 
+                        "property": "ErrorMessage", 
+                        "value": "Too Short Project Name", 
+                        "source": "response_json"
+                    }
+                ]
+            }
+        ], 
+        "description": ""
+    }, 
+    {
+        "trigger_url": "https://api.runscope.com/radar/12fbca22-35f0-4c4e-bdd6-e46ae444f61d/trigger", 
+        "name": "Create Project - 102 Not Authenticated", 
+        "version": "1.0", 
+        "exported_at": 1575567199, 
+        "steps": [
+            {
+                "body": "{\r\n\"Content\": \"{{projectName}}\",\r\n\"Icon\": 4\r\n}", 
+                "skipped": false, 
+                "form": {}, 
+                "url": "{{baseUrl}}projects.json", 
+                "variables": [], 
+                "args": {}, 
+                "step_type": "request", 
+                "auth": {
+                    "username": "", 
+                    "auth_type": "basic", 
+                    "password": ""
+                }, 
+                "multipart_form": [], 
+                "note": "", 
+                "headers": {}, 
+                "assertions": [
+                    {
+                        "comparison": "equal_number", 
+                        "value": 200, 
+                        "source": "response_status"
+                    }, 
+                    {
+                        "comparison": "equal", 
+                        "property": "ErrorCode", 
+                        "value": "102", 
+                        "source": "response_json"
+                    }, 
+                    {
+                        "comparison": "equal", 
+                        "property": "ErrorMessage", 
+                        "value": "Not Authenticated", 
+                        "source": "response_json"
+                    }
+                ], 
+                "scripts": [], 
+                "before_scripts": [], 
+                "data": "", 
+                "method": "POST"
+            }
+        ], 
+        "description": ""
+    }, 
+    {
+        "trigger_url": "https://api.runscope.com/radar/f60b2bf9-e634-43ec-9596-a822f1b434e9/trigger", 
+        "name": "Create Project - 200 Successful", 
+        "version": "1.0", 
+        "exported_at": 1575567199, 
+        "steps": [
+            {
+                "skipped": false, 
+                "bucket_key": "0p9t7273xmp5", 
+                "trigger_token": null, 
+                "step_type": "subtest", 
+                "variables": [
+                    {
+                        "source": "response_json", 
+                        "property": "variables.emailFromResponse", 
+                        "name": "userEmail"
+                    }, 
+                    {
+                        "source": "response_json", 
+                        "property": "variables.passwordFromRequest", 
+                        "name": "userPassword"
+                    }
+                ], 
+                "environment_uuid": "", 
+                "use_parent_environment": true, 
+                "note": "", 
+                "params": [], 
+                "assertions": [
+                    {
+                        "comparison": "equal", 
+                        "property": "result", 
+                        "value": "pass", 
+                        "source": "response_json"
+                    }
+                ], 
+                "scripts": [], 
+                "before_scripts": [], 
+                "test_uuid": "7df1d82b-0cf2-4259-a101-e78bcd411234"
+            }, 
+            {
+                "body": "{\r\n\"Content\": \"{{projectName}}\",\r\n\"Icon\": 4\r\n}", 
+                "skipped": false, 
+                "form": {}, 
+                "url": "{{baseUrl}}projects.json", 
+                "variables": [], 
+                "args": {}, 
+                "step_type": "request", 
+                "auth": {
+                    "username": "{{userEmail}}", 
+                    "auth_type": "basic", 
+                    "password": "{{userPassword}}"
+                }, 
+                "auth.password": "{{userPassword}}", 
+                "note": "", 
+                "headers": {}, 
+                "auth.username": "{{userEmail}}", 
+                "scripts": [], 
+                "multipart_form": [], 
+                "before_scripts": [], 
+                "data": "", 
+                "method": "POST", 
+                "assertions": [
+                    {
+                        "comparison": "equal_number", 
+                        "value": 200, 
+                        "source": "response_status"
+                    }, 
+                    {
+                        "comparison": "is_a_number", 
+                        "property": "Id", 
+                        "value": null, 
+                        "source": "response_json"
+                    }, 
+                    {
+                        "comparison": "equal", 
+                        "property": "Icon", 
+                        "value": "4", 
+                        "source": "response_json"
+                    }, 
+                    {
+                        "comparison": "equal", 
+                        "property": "Content", 
+                        "value": "{{projectName}}", 
+                        "source": "response_json"
+                    }
+                ]
+            }
+        ], 
+        "description": null
+    }
+] 
+

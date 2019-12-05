@@ -1,0 +1,1283 @@
+[ 
+    {
+        "trigger_url": "https://api.runscope.com/radar/a47becd9-a724-4207-9dcf-99f1336859f0/trigger", 
+        "name": "Successful Update User Response Time <1000 ms", 
+        "version": "1.0", 
+        "exported_at": 1575567343, 
+        "steps": [
+            {
+                "skipped": false, 
+                "bucket_key": "0p9t7273xmp5", 
+                "trigger_token": null, 
+                "step_type": "subtest", 
+                "variables": [
+                    {
+                        "source": "response_json", 
+                        "property": "variables.emailFromResponse", 
+                        "name": "userEmail"
+                    }, 
+                    {
+                        "source": "response_json", 
+                        "property": "variables.nameFromResponse", 
+                        "name": "userFullName"
+                    }, 
+                    {
+                        "source": "response_json", 
+                        "property": "variables.idFromResponse", 
+                        "name": "userId"
+                    }, 
+                    {
+                        "source": "response_json", 
+                        "property": "variables.passwordFromRequest", 
+                        "name": "userPassword"
+                    }
+                ], 
+                "environment_uuid": "", 
+                "use_parent_environment": true, 
+                "note": "", 
+                "params": [], 
+                "assertions": [
+                    {
+                        "comparison": "equal", 
+                        "property": "result", 
+                        "value": "pass", 
+                        "source": "response_json"
+                    }
+                ], 
+                "scripts": [], 
+                "before_scripts": [], 
+                "test_uuid": "7df1d82b-0cf2-4259-a101-e78bcd411234"
+            }, 
+            {
+                "body": "{\r\n\"FullName\": \"Test Name\"\r\n}", 
+                "skipped": false, 
+                "form": {}, 
+                "url": "{{baseUrl}}user/0.json", 
+                "variables": [], 
+                "multipart_form": [], 
+                "step_type": "request", 
+                "auth.password": "{{userPassword}}", 
+                "note": "", 
+                "headers": {}, 
+                "assertions": [
+                    {
+                        "comparison": "equal_number", 
+                        "value": "200", 
+                        "source": "response_status"
+                    }, 
+                    {
+                        "comparison": "equal", 
+                        "property": "FullName", 
+                        "value": "Test Name", 
+                        "source": "response_json"
+                    }, 
+                    {
+                        "comparison": "equal", 
+                        "property": "Email", 
+                        "value": "{{userEmail}}", 
+                        "source": "response_json"
+                    }, 
+                    {
+                        "comparison": "not_equal", 
+                        "property": "FullName", 
+                        "value": "{{userFullName}}", 
+                        "source": "response_json"
+                    }, 
+                    {
+                        "comparison": "is_less_than", 
+                        "value": "1000", 
+                        "source": "response_time"
+                    }
+                ], 
+                "scripts": [], 
+                "before_scripts": [], 
+                "auth": {
+                    "username": "{{userEmail}}", 
+                    "auth_type": "basic", 
+                    "password": "{{userPassword}}"
+                }, 
+                "method": "PUT", 
+                "auth.username": "{{userEmail}}"
+            }
+        ], 
+        "description": ""
+    }, 
+    {
+        "trigger_url": "https://api.runscope.com/radar/89812512-aa7c-4c8d-8f95-56656eb903ca/trigger", 
+        "name": "Successful Get User Response Time <1000 ms", 
+        "version": "1.0", 
+        "exported_at": 1575567343, 
+        "steps": [
+            {
+                "skipped": false, 
+                "bucket_key": "0p9t7273xmp5", 
+                "trigger_token": null, 
+                "step_type": "subtest", 
+                "variables": [
+                    {
+                        "source": "response_json", 
+                        "property": "variables.emailFromResponse", 
+                        "name": "userEmail"
+                    }, 
+                    {
+                        "source": "response_json", 
+                        "property": "variables.nameFromResponse", 
+                        "name": "userFullName"
+                    }, 
+                    {
+                        "source": "response_json", 
+                        "property": "variables.idFromResponse", 
+                        "name": "userId"
+                    }, 
+                    {
+                        "source": "response_json", 
+                        "property": "variables.passwordFromRequest", 
+                        "name": "userPassword"
+                    }
+                ], 
+                "environment_uuid": "", 
+                "use_parent_environment": true, 
+                "note": "", 
+                "params": [], 
+                "assertions": [
+                    {
+                        "comparison": "equal", 
+                        "property": "result", 
+                        "value": "pass", 
+                        "source": "response_json"
+                    }
+                ], 
+                "scripts": [], 
+                "before_scripts": [], 
+                "test_uuid": "7df1d82b-0cf2-4259-a101-e78bcd411234"
+            }, 
+            {
+                "skipped": false, 
+                "url": "{{baseUrl}}user.json", 
+                "variables": [], 
+                "multipart_form": [], 
+                "step_type": "request", 
+                "auth.password": "{{userPassword}}", 
+                "note": "", 
+                "headers": {}, 
+                "assertions": [
+                    {
+                        "comparison": "equal_number", 
+                        "value": "200", 
+                        "source": "response_status"
+                    }, 
+                    {
+                        "comparison": "equal", 
+                        "property": "Email", 
+                        "value": "{{userEmail}}", 
+                        "source": "response_json"
+                    }, 
+                    {
+                        "comparison": "equal", 
+                        "property": "Id", 
+                        "value": "{{userId}}", 
+                        "source": "response_json"
+                    }, 
+                    {
+                        "comparison": "equal", 
+                        "property": "FullName", 
+                        "value": "{{userFullName}}", 
+                        "source": "response_json"
+                    }, 
+                    {
+                        "comparison": "is_less_than", 
+                        "value": "1000", 
+                        "source": "response_time"
+                    }
+                ], 
+                "scripts": [], 
+                "before_scripts": [], 
+                "auth": {
+                    "username": "{{userEmail}}", 
+                    "auth_type": "basic", 
+                    "password": "{{userPassword}}"
+                }, 
+                "method": "GET", 
+                "auth.username": "{{userEmail}}"
+            }
+        ], 
+        "description": ""
+    }, 
+    {
+        "trigger_url": "https://api.runscope.com/radar/5f61c74d-ba43-4f60-a530-59be013d1fb8/trigger", 
+        "name": "Successful Delete User Response Time <1000 ms", 
+        "version": "1.0", 
+        "exported_at": 1575567343, 
+        "steps": [
+            {
+                "skipped": false, 
+                "bucket_key": "0p9t7273xmp5", 
+                "trigger_token": null, 
+                "step_type": "subtest", 
+                "variables": [
+                    {
+                        "source": "response_json", 
+                        "property": "variables.emailFromResponse", 
+                        "name": "userEmail"
+                    }, 
+                    {
+                        "source": "response_json", 
+                        "property": "variables.nameFromResponse", 
+                        "name": "userFullName"
+                    }, 
+                    {
+                        "source": "response_json", 
+                        "property": "variables.idFromResponse", 
+                        "name": "userId"
+                    }, 
+                    {
+                        "source": "response_json", 
+                        "property": "variables.passwordFromRequest", 
+                        "name": "userPassword"
+                    }
+                ], 
+                "environment_uuid": "", 
+                "use_parent_environment": true, 
+                "note": "", 
+                "params": [], 
+                "assertions": [
+                    {
+                        "comparison": "equal", 
+                        "property": "result", 
+                        "value": "pass", 
+                        "source": "response_json"
+                    }
+                ], 
+                "scripts": [], 
+                "before_scripts": [], 
+                "test_uuid": "7df1d82b-0cf2-4259-a101-e78bcd411234"
+            }, 
+            {
+                "body": "", 
+                "skipped": false, 
+                "form": {}, 
+                "url": "{{baseUrl}}user/0.json", 
+                "variables": [], 
+                "multipart_form": [], 
+                "step_type": "request", 
+                "auth.password": "{{userPassword}}", 
+                "note": "", 
+                "headers": {}, 
+                "assertions": [
+                    {
+                        "comparison": "equal_number", 
+                        "value": "200", 
+                        "source": "response_status"
+                    }, 
+                    {
+                        "comparison": "equal", 
+                        "property": "FullName", 
+                        "value": "{{userFullName}}", 
+                        "source": "response_json"
+                    }, 
+                    {
+                        "comparison": "is_less_than", 
+                        "value": "1000", 
+                        "source": "response_time"
+                    }
+                ], 
+                "scripts": [], 
+                "before_scripts": [], 
+                "auth": {
+                    "username": "{{userEmail}}", 
+                    "auth_type": "basic", 
+                    "password": "{{userPassword}}"
+                }, 
+                "method": "DELETE", 
+                "auth.username": "{{userEmail}}"
+            }
+        ], 
+        "description": ""
+    }, 
+    {
+        "trigger_url": "https://api.runscope.com/radar/efcf2456-751d-4a24-bb80-ecdca4523bca/trigger", 
+        "name": "Successful Create User Response Time <1000 ms", 
+        "version": "1.0", 
+        "exported_at": 1575567343, 
+        "steps": [
+            {
+                "body": "{\r\n    \"Email\": \"{{email}}\",\r\n    \"FullName\": \"{{firstName}} {{lastName}}\",\r\n    \"Password\": \"{{password}}\"\r\n}", 
+                "skipped": false, 
+                "form": {}, 
+                "url": "{{baseUrl}}user.json", 
+                "variables": [], 
+                "args": {}, 
+                "step_type": "request", 
+                "auth": {}, 
+                "note": "", 
+                "headers": {}, 
+                "assertions": [
+                    {
+                        "comparison": "equal_number", 
+                        "value": 200, 
+                        "source": "response_status"
+                    }, 
+                    {
+                        "comparison": "is_less_than", 
+                        "value": "1000", 
+                        "source": "response_time"
+                    }
+                ], 
+                "scripts": [
+                    "var data = JSON.parse(response.body);\nvariables.set(\"emailFromResponse\", data.Email);\nvariables.set(\"nameFromResponse\", data.FullName);\nvariables.set(\"idFromResponse\", data.Id);"
+                ], 
+                "multipart_form": [], 
+                "before_scripts": [
+                    "var data = JSON.parse(request.body);\nvariables.set(\"passwordFromRequest\", data.Password);"
+                ], 
+                "data": "", 
+                "method": "POST"
+            }
+        ], 
+        "description": ""
+    }, 
+    {
+        "trigger_url": "https://api.runscope.com/radar/2d31caaf-6ad0-436d-87e5-f70e4a739c1b/trigger", 
+        "name": "Delete User - 404 Not Found", 
+        "version": "1.0", 
+        "exported_at": 1575567343, 
+        "steps": [
+            {
+                "body": "", 
+                "skipped": false, 
+                "form": {}, 
+                "url": "{{baseUrl}}0.json", 
+                "variables": [], 
+                "multipart_form": [], 
+                "step_type": "request", 
+                "auth": {
+                    "username": "abcd@abcd.test", 
+                    "auth_type": "basic", 
+                    "password": "testtest"
+                }, 
+                "note": "", 
+                "headers": {}, 
+                "assertions": [
+                    {
+                        "comparison": "equal_number", 
+                        "value": "404", 
+                        "source": "response_status"
+                    }
+                ], 
+                "scripts": [], 
+                "before_scripts": [], 
+                "method": "DELETE"
+            }
+        ], 
+        "description": ""
+    }, 
+    {
+        "trigger_url": "https://api.runscope.com/radar/023d18f9-d79e-4a3f-a48a-f61ff1c48b46/trigger", 
+        "name": "Delete User - 200 Successful", 
+        "version": "1.0", 
+        "exported_at": 1575567343, 
+        "steps": [
+            {
+                "skipped": false, 
+                "bucket_key": "0p9t7273xmp5", 
+                "trigger_token": null, 
+                "step_type": "subtest", 
+                "variables": [
+                    {
+                        "source": "response_json", 
+                        "property": "variables.emailFromResponse", 
+                        "name": "userEmail"
+                    }, 
+                    {
+                        "source": "response_json", 
+                        "property": "variables.nameFromResponse", 
+                        "name": "userFullName"
+                    }, 
+                    {
+                        "source": "response_json", 
+                        "property": "variables.idFromResponse", 
+                        "name": "userId"
+                    }, 
+                    {
+                        "source": "response_json", 
+                        "property": "variables.passwordFromRequest", 
+                        "name": "userPassword"
+                    }
+                ], 
+                "environment_uuid": "", 
+                "use_parent_environment": true, 
+                "note": "", 
+                "params": [], 
+                "assertions": [
+                    {
+                        "comparison": "equal", 
+                        "property": "result", 
+                        "value": "pass", 
+                        "source": "response_json"
+                    }
+                ], 
+                "scripts": [], 
+                "before_scripts": [], 
+                "test_uuid": "7df1d82b-0cf2-4259-a101-e78bcd411234"
+            }, 
+            {
+                "body": "", 
+                "skipped": false, 
+                "form": {}, 
+                "url": "{{baseUrl}}user/0.json", 
+                "variables": [], 
+                "multipart_form": [], 
+                "step_type": "request", 
+                "auth.password": "{{userPassword}}", 
+                "note": "", 
+                "headers": {}, 
+                "assertions": [
+                    {
+                        "comparison": "equal_number", 
+                        "value": "200", 
+                        "source": "response_status"
+                    }, 
+                    {
+                        "comparison": "equal", 
+                        "property": "FullName", 
+                        "value": "{{userFullName}}", 
+                        "source": "response_json"
+                    }, 
+                    {
+                        "comparison": "equal", 
+                        "property": "Email", 
+                        "value": "{{userEmail}}", 
+                        "source": "response_json"
+                    }
+                ], 
+                "scripts": [], 
+                "before_scripts": [], 
+                "auth": {
+                    "username": "{{userEmail}}", 
+                    "auth_type": "basic", 
+                    "password": "{{userPassword}}"
+                }, 
+                "method": "DELETE", 
+                "auth.username": "{{userEmail}}"
+            }, 
+            {
+                "skipped": false, 
+                "url": "{{baseUrl}}user.json", 
+                "variables": [], 
+                "multipart_form": [], 
+                "step_type": "request", 
+                "auth.password": "{{userPassword}}", 
+                "note": "", 
+                "headers": {}, 
+                "assertions": [
+                    {
+                        "comparison": "equal_number", 
+                        "value": "200", 
+                        "source": "response_status"
+                    }, 
+                    {
+                        "comparison": "equal", 
+                        "property": "ErrorMessage", 
+                        "value": "Account doesn't exist", 
+                        "source": "response_json"
+                    }, 
+                    {
+                        "comparison": "equal", 
+                        "property": "ErrorCode", 
+                        "value": "105", 
+                        "source": "response_json"
+                    }
+                ], 
+                "scripts": [], 
+                "before_scripts": [], 
+                "auth": {
+                    "username": "{{userEmail}}", 
+                    "auth_type": "basic", 
+                    "password": "{{userPassword}}"
+                }, 
+                "method": "GET", 
+                "auth.username": "{{userEmail}}"
+            }
+        ], 
+        "description": ""
+    }, 
+    {
+        "trigger_url": "https://api.runscope.com/radar/40396ed0-e4b3-4d07-ae9a-1368c60e090d/trigger", 
+        "name": "Update User - 105 Account Doesn't Exist", 
+        "version": "1.0", 
+        "exported_at": 1575567343, 
+        "steps": [
+            {
+                "skipped": false, 
+                "bucket_key": "0p9t7273xmp5", 
+                "trigger_token": null, 
+                "step_type": "subtest", 
+                "variables": [
+                    {
+                        "source": "response_json", 
+                        "property": "variables.emailFromResponse", 
+                        "name": "userEmail"
+                    }, 
+                    {
+                        "source": "response_json", 
+                        "property": "variables.nameFromResponse", 
+                        "name": "userFullName"
+                    }, 
+                    {
+                        "source": "response_json", 
+                        "property": "variables.idFromResponse", 
+                        "name": "userId"
+                    }, 
+                    {
+                        "source": "response_json", 
+                        "property": "variables.passwordFromRequest", 
+                        "name": "userPassword"
+                    }
+                ], 
+                "environment_uuid": "", 
+                "use_parent_environment": true, 
+                "note": "", 
+                "params": [], 
+                "assertions": [
+                    {
+                        "comparison": "equal", 
+                        "property": "result", 
+                        "value": "pass", 
+                        "source": "response_json"
+                    }
+                ], 
+                "scripts": [], 
+                "before_scripts": [], 
+                "test_uuid": "7df1d82b-0cf2-4259-a101-e78bcd411234"
+            }, 
+            {
+                "body": "{\r\n\"FullName\": \"Test Name\"\r\n}", 
+                "skipped": false, 
+                "form": {}, 
+                "url": "{{baseUrl}}user/0.json", 
+                "variables": [], 
+                "multipart_form": [], 
+                "step_type": "request", 
+                "auth": {
+                    "username": "abcd@abc.com", 
+                    "auth_type": "basic", 
+                    "password": "abcdabcd"
+                }, 
+                "note": "", 
+                "headers": {}, 
+                "assertions": [
+                    {
+                        "comparison": "equal_number", 
+                        "value": "200", 
+                        "source": "response_status"
+                    }, 
+                    {
+                        "comparison": "equal", 
+                        "property": "ErrorMessage", 
+                        "value": "Account doesn't exist", 
+                        "source": "response_json"
+                    }, 
+                    {
+                        "comparison": "equal", 
+                        "property": "ErrorCode", 
+                        "value": "105", 
+                        "source": "response_json"
+                    }
+                ], 
+                "scripts": [], 
+                "before_scripts": [], 
+                "method": "PUT"
+            }
+        ], 
+        "description": ""
+    }, 
+    {
+        "trigger_url": "https://api.runscope.com/radar/0ddfaa77-9b8f-49de-aa61-6885dc6ba98f/trigger", 
+        "name": "Update User - 102 Not Authenticated", 
+        "version": "1.0", 
+        "exported_at": 1575567343, 
+        "steps": [
+            {
+                "skipped": false, 
+                "bucket_key": "0p9t7273xmp5", 
+                "trigger_token": null, 
+                "step_type": "subtest", 
+                "variables": [
+                    {
+                        "source": "response_json", 
+                        "property": "variables.emailFromResponse", 
+                        "name": "userEmail"
+                    }, 
+                    {
+                        "source": "response_json", 
+                        "property": "variables.nameFromResponse", 
+                        "name": "userFullName"
+                    }, 
+                    {
+                        "source": "response_json", 
+                        "property": "variables.idFromResponse", 
+                        "name": "userId"
+                    }, 
+                    {
+                        "source": "response_json", 
+                        "property": "variables.passwordFromRequest", 
+                        "name": "userPassword"
+                    }
+                ], 
+                "environment_uuid": "", 
+                "use_parent_environment": true, 
+                "note": "", 
+                "params": [], 
+                "assertions": [
+                    {
+                        "comparison": "equal", 
+                        "property": "result", 
+                        "value": "pass", 
+                        "source": "response_json"
+                    }
+                ], 
+                "scripts": [], 
+                "before_scripts": [], 
+                "test_uuid": "7df1d82b-0cf2-4259-a101-e78bcd411234"
+            }, 
+            {
+                "body": "{\r\n\"FullName\": \"Test Name\"\r\n}", 
+                "skipped": false, 
+                "form": {}, 
+                "url": "{{baseUrl}}user/0.json", 
+                "variables": [], 
+                "multipart_form": [], 
+                "step_type": "request", 
+                "auth": {
+                    "username": "", 
+                    "auth_type": "basic", 
+                    "password": ""
+                }, 
+                "note": "", 
+                "headers": {}, 
+                "assertions": [
+                    {
+                        "comparison": "equal_number", 
+                        "value": "200", 
+                        "source": "response_status"
+                    }, 
+                    {
+                        "comparison": "equal", 
+                        "property": "ErrorMessage", 
+                        "value": "Not Authenticated", 
+                        "source": "response_json"
+                    }, 
+                    {
+                        "comparison": "equal", 
+                        "property": "ErrorCode", 
+                        "value": "102", 
+                        "source": "response_json"
+                    }
+                ], 
+                "scripts": [], 
+                "before_scripts": [], 
+                "method": "PUT"
+            }
+        ], 
+        "description": ""
+    }, 
+    {
+        "trigger_url": "https://api.runscope.com/radar/c0a91640-4428-40db-a907-f9b53e380c00/trigger", 
+        "name": "Update User - 200 Successful", 
+        "version": "1.0", 
+        "exported_at": 1575567343, 
+        "steps": [
+            {
+                "skipped": false, 
+                "bucket_key": "0p9t7273xmp5", 
+                "trigger_token": null, 
+                "step_type": "subtest", 
+                "variables": [
+                    {
+                        "source": "response_json", 
+                        "property": "variables.emailFromResponse", 
+                        "name": "userEmail"
+                    }, 
+                    {
+                        "source": "response_json", 
+                        "property": "variables.nameFromResponse", 
+                        "name": "userFullName"
+                    }, 
+                    {
+                        "source": "response_json", 
+                        "property": "variables.idFromResponse", 
+                        "name": "userId"
+                    }, 
+                    {
+                        "source": "response_json", 
+                        "property": "variables.passwordFromRequest", 
+                        "name": "userPassword"
+                    }
+                ], 
+                "environment_uuid": "", 
+                "use_parent_environment": true, 
+                "note": "", 
+                "params": [], 
+                "assertions": [
+                    {
+                        "comparison": "equal", 
+                        "property": "result", 
+                        "value": "pass", 
+                        "source": "response_json"
+                    }
+                ], 
+                "scripts": [], 
+                "before_scripts": [], 
+                "test_uuid": "7df1d82b-0cf2-4259-a101-e78bcd411234"
+            }, 
+            {
+                "body": "{\r\n\"FullName\": \"Test Name\"\r\n}", 
+                "skipped": false, 
+                "form": {}, 
+                "url": "{{baseUrl}}user/0.json", 
+                "variables": [], 
+                "multipart_form": [], 
+                "step_type": "request", 
+                "auth.password": "{{userPassword}}", 
+                "note": "", 
+                "headers": {}, 
+                "assertions": [
+                    {
+                        "comparison": "equal_number", 
+                        "value": "200", 
+                        "source": "response_status"
+                    }, 
+                    {
+                        "comparison": "equal", 
+                        "property": "FullName", 
+                        "value": "Test Name", 
+                        "source": "response_json"
+                    }, 
+                    {
+                        "comparison": "equal", 
+                        "property": "Email", 
+                        "value": "{{userEmail}}", 
+                        "source": "response_json"
+                    }, 
+                    {
+                        "comparison": "not_equal", 
+                        "property": "FullName", 
+                        "value": "{{userFullName}}", 
+                        "source": "response_json"
+                    }
+                ], 
+                "scripts": [], 
+                "before_scripts": [], 
+                "auth": {
+                    "username": "{{userEmail}}", 
+                    "auth_type": "basic", 
+                    "password": "{{userPassword}}"
+                }, 
+                "method": "PUT", 
+                "auth.username": "{{userEmail}}"
+            }, 
+            {
+                "skipped": false, 
+                "url": "{{baseUrl}}user.json", 
+                "variables": [], 
+                "multipart_form": [], 
+                "step_type": "request", 
+                "auth.password": "{{userPassword}}", 
+                "note": "", 
+                "headers": {}, 
+                "assertions": [
+                    {
+                        "comparison": "equal_number", 
+                        "value": "200", 
+                        "source": "response_status"
+                    }, 
+                    {
+                        "comparison": "equal", 
+                        "property": "FullName", 
+                        "value": "Test Name", 
+                        "source": "response_json"
+                    }, 
+                    {
+                        "comparison": "equal", 
+                        "property": "Email", 
+                        "value": "{{userEmail}}", 
+                        "source": "response_json"
+                    }, 
+                    {
+                        "comparison": "not_equal", 
+                        "property": "FullName", 
+                        "value": "{{userFullName}}", 
+                        "source": "response_json"
+                    }
+                ], 
+                "scripts": [], 
+                "before_scripts": [], 
+                "auth": {
+                    "username": "{{userEmail}}", 
+                    "auth_type": "basic", 
+                    "password": "{{userPassword}}"
+                }, 
+                "method": "GET", 
+                "auth.username": "{{userEmail}}"
+            }
+        ], 
+        "description": ""
+    }, 
+    {
+        "trigger_url": "https://api.runscope.com/radar/a0d0fbdc-66bd-47d2-a491-780482821070/trigger", 
+        "name": "Get User - 105 Account Doesn't Exist", 
+        "version": "1.0", 
+        "exported_at": 1575567343, 
+        "steps": [
+            {
+                "skipped": false, 
+                "url": "{{baseUrl}}user.json", 
+                "variables": [], 
+                "multipart_form": [], 
+                "step_type": "request", 
+                "auth.password": "{{password}}", 
+                "note": "", 
+                "headers": {}, 
+                "assertions": [
+                    {
+                        "comparison": "equal_number", 
+                        "value": "200", 
+                        "source": "response_status"
+                    }, 
+                    {
+                        "comparison": "equal", 
+                        "property": "ErrorCode", 
+                        "value": "105", 
+                        "source": "response_json"
+                    }, 
+                    {
+                        "comparison": "equal", 
+                        "property": "ErrorMessage", 
+                        "value": "Account doesn't exist", 
+                        "source": "response_json"
+                    }
+                ], 
+                "scripts": [], 
+                "before_scripts": [], 
+                "auth": {
+                    "username": "{{email}}", 
+                    "auth_type": "basic", 
+                    "password": "{{password}}"
+                }, 
+                "method": "GET", 
+                "auth.username": "{{email}}"
+            }
+        ], 
+        "description": ""
+    }, 
+    {
+        "trigger_url": "https://api.runscope.com/radar/e4a7f0f4-f987-4cae-b158-92b44c34b5d1/trigger", 
+        "name": "Get User - 102 Not Authenticated", 
+        "version": "1.0", 
+        "exported_at": 1575567343, 
+        "steps": [
+            {
+                "skipped": false, 
+                "url": "{{baseUrl}}user.json", 
+                "variables": [], 
+                "multipart_form": [], 
+                "step_type": "request", 
+                "auth": {
+                    "username": "", 
+                    "auth_type": "basic", 
+                    "password": ""
+                }, 
+                "note": "", 
+                "headers": {}, 
+                "assertions": [
+                    {
+                        "comparison": "equal_number", 
+                        "value": "200", 
+                        "source": "response_status"
+                    }, 
+                    {
+                        "comparison": "equal", 
+                        "property": "ErrorCode", 
+                        "value": "102", 
+                        "source": "response_json"
+                    }, 
+                    {
+                        "comparison": "contains", 
+                        "property": "ErrorMessage", 
+                        "value": "Not Authenticated", 
+                        "source": "response_json"
+                    }
+                ], 
+                "scripts": [], 
+                "before_scripts": [], 
+                "method": "GET"
+            }
+        ], 
+        "description": ""
+    }, 
+    {
+        "trigger_url": "https://api.runscope.com/radar/cc2d968d-a115-4a78-9cfd-712514652b76/trigger", 
+        "name": "Get User - 200 Successful", 
+        "version": "1.0", 
+        "exported_at": 1575567343, 
+        "steps": [
+            {
+                "skipped": false, 
+                "bucket_key": "0p9t7273xmp5", 
+                "trigger_token": null, 
+                "step_type": "subtest", 
+                "variables": [
+                    {
+                        "source": "response_json", 
+                        "property": "variables.emailFromResponse", 
+                        "name": "userEmail"
+                    }, 
+                    {
+                        "source": "response_json", 
+                        "property": "variables.nameFromResponse", 
+                        "name": "userFullName"
+                    }, 
+                    {
+                        "source": "response_json", 
+                        "property": "variables.idFromResponse", 
+                        "name": "userId"
+                    }, 
+                    {
+                        "source": "response_json", 
+                        "property": "variables.passwordFromRequest", 
+                        "name": "userPassword"
+                    }
+                ], 
+                "environment_uuid": "", 
+                "use_parent_environment": true, 
+                "note": "", 
+                "params": [], 
+                "assertions": [
+                    {
+                        "comparison": "equal", 
+                        "property": "result", 
+                        "value": "pass", 
+                        "source": "response_json"
+                    }
+                ], 
+                "scripts": [], 
+                "before_scripts": [], 
+                "test_uuid": "7df1d82b-0cf2-4259-a101-e78bcd411234"
+            }, 
+            {
+                "skipped": false, 
+                "url": "{{baseUrl}}user.json", 
+                "variables": [], 
+                "multipart_form": [], 
+                "step_type": "request", 
+                "auth.password": "{{userPassword}}", 
+                "note": "", 
+                "headers": {}, 
+                "assertions": [
+                    {
+                        "comparison": "equal_number", 
+                        "value": "200", 
+                        "source": "response_status"
+                    }, 
+                    {
+                        "comparison": "equal", 
+                        "property": "Email", 
+                        "value": "{{userEmail}}", 
+                        "source": "response_json"
+                    }, 
+                    {
+                        "comparison": "equal", 
+                        "property": "Id", 
+                        "value": "{{userId}}", 
+                        "source": "response_json"
+                    }, 
+                    {
+                        "comparison": "equal", 
+                        "property": "FullName", 
+                        "value": "{{userFullName}}", 
+                        "source": "response_json"
+                    }
+                ], 
+                "scripts": [], 
+                "before_scripts": [], 
+                "auth": {
+                    "username": "{{userEmail}}", 
+                    "auth_type": "basic", 
+                    "password": "{{userPassword}}"
+                }, 
+                "method": "GET", 
+                "auth.username": "{{userEmail}}"
+            }
+        ], 
+        "description": ""
+    }, 
+    {
+        "trigger_url": "https://api.runscope.com/radar/8c9a0098-a9d8-4f30-8b59-d02af403a2f0/trigger", 
+        "name": "Create User - 306 Invalid Full Name", 
+        "version": "1.0", 
+        "exported_at": 1575567343, 
+        "steps": [
+            {
+                "body": "{\r\n    \"Email\": \"{{email}}\",\r\n    \"FullName\": \"\",\r\n    \"Password\": \"{{password}}\"\r\n}", 
+                "skipped": false, 
+                "form": {}, 
+                "url": "{{baseUrl}}user.json", 
+                "variables": [], 
+                "args": {}, 
+                "step_type": "request", 
+                "auth": {}, 
+                "note": "", 
+                "headers": {}, 
+                "assertions": [
+                    {
+                        "comparison": "equal_number", 
+                        "value": 200, 
+                        "source": "response_status"
+                    }, 
+                    {
+                        "comparison": "contains", 
+                        "property": "ErrorCode", 
+                        "value": "306", 
+                        "source": "response_json"
+                    }, 
+                    {
+                        "comparison": "contains", 
+                        "property": "ErrorMessage", 
+                        "value": "Invalid FullName", 
+                        "source": "response_json"
+                    }
+                ], 
+                "scripts": [
+                    "var data = JSON.parse(response.body);\nvariables.set(\"emailFromResponse\", data.Email);\nvariables.set(\"nameFromResponse\", data.FullName);\nvariables.set(\"idFromResponse\", data.Id);"
+                ], 
+                "multipart_form": [], 
+                "before_scripts": [], 
+                "data": "", 
+                "method": "POST"
+            }
+        ], 
+        "description": ""
+    }, 
+    {
+        "trigger_url": "https://api.runscope.com/radar/82a945a6-79b7-4323-9fbe-8d1aecc33837/trigger", 
+        "name": "Create User - 307 Invalid Email", 
+        "version": "1.0", 
+        "exported_at": 1575567343, 
+        "steps": [
+            {
+                "body": "{\r\n    \"Email\": \"abcd\",\r\n    \"FullName\": \"{{firstName}} {{lastName}}\",\r\n    \"Password\": \"{{password}}\"\r\n}", 
+                "skipped": false, 
+                "form": {}, 
+                "url": "{{baseUrl}}user.json", 
+                "variables": [], 
+                "args": {}, 
+                "step_type": "request", 
+                "auth": {}, 
+                "note": "", 
+                "headers": {}, 
+                "assertions": [
+                    {
+                        "comparison": "equal_number", 
+                        "value": 200, 
+                        "source": "response_status"
+                    }, 
+                    {
+                        "comparison": "contains", 
+                        "property": "ErrorCode", 
+                        "value": "307", 
+                        "source": "response_json"
+                    }, 
+                    {
+                        "comparison": "contains", 
+                        "property": "ErrorMessage", 
+                        "value": "Invalid Email Address", 
+                        "source": "response_json"
+                    }
+                ], 
+                "scripts": [
+                    "var data = JSON.parse(response.body);\nvariables.set(\"emailFromResponse\", data.Email);\nvariables.set(\"nameFromResponse\", data.FullName);\nvariables.set(\"idFromResponse\", data.Id);"
+                ], 
+                "multipart_form": [], 
+                "before_scripts": [], 
+                "data": "", 
+                "method": "POST"
+            }
+        ], 
+        "description": ""
+    }, 
+    {
+        "trigger_url": "https://api.runscope.com/radar/f86e81d9-5a02-457a-86b1-eabe6c57b870/trigger", 
+        "name": "Create User - 202 Password too short", 
+        "version": "1.0", 
+        "exported_at": 1575567343, 
+        "steps": [
+            {
+                "body": "{\r\n    \"Email\": \"{{email}}\",\r\n    \"FullName\": \"{{firstName}} {{lastName}}\",\r\n    \"Password\": \"\"\r\n}", 
+                "skipped": false, 
+                "form": {}, 
+                "url": "{{baseUrl}}user.json", 
+                "variables": [], 
+                "multipart_form": [], 
+                "step_type": "request", 
+                "auth": {}, 
+                "note": "", 
+                "headers": {}, 
+                "assertions": [
+                    {
+                        "comparison": "equal_number", 
+                        "value": "200", 
+                        "source": "response_status"
+                    }, 
+                    {
+                        "comparison": "contains", 
+                        "property": "ErrorCode", 
+                        "value": "202", 
+                        "source": "response_json"
+                    }, 
+                    {
+                        "comparison": "contains", 
+                        "property": "ErrorMessage", 
+                        "value": "Password too short", 
+                        "source": "response_json"
+                    }
+                ], 
+                "scripts": [], 
+                "before_scripts": [], 
+                "method": "POST"
+            }
+        ], 
+        "description": ""
+    }, 
+    {
+        "trigger_url": "https://api.runscope.com/radar/a736956e-9f93-4084-8f69-90fc67f3da37/trigger", 
+        "name": "Create User - 200 Successful", 
+        "version": "1.0", 
+        "exported_at": 1575567343, 
+        "steps": [
+            {
+                "body": "{\r\n    \"Email\": \"{{email}}\",\r\n    \"FullName\": \"{{firstName}} {{lastName}}\",\r\n    \"Password\": \"{{password}}\"\r\n}", 
+                "skipped": false, 
+                "form": {}, 
+                "url": "{{baseUrl}}user.json", 
+                "variables": [], 
+                "args": {}, 
+                "step_type": "request", 
+                "auth": {}, 
+                "note": "", 
+                "headers": {}, 
+                "assertions": [
+                    {
+                        "comparison": "equal_number", 
+                        "value": 200, 
+                        "source": "response_status"
+                    }, 
+                    {
+                        "comparison": "contains", 
+                        "property": "Email", 
+                        "value": "{{email}}", 
+                        "source": "response_json"
+                    }, 
+                    {
+                        "comparison": "equal", 
+                        "property": "FullName", 
+                        "value": "{{firstName}} {{lastName}}", 
+                        "source": "response_json"
+                    }, 
+                    {
+                        "comparison": "is_a_number", 
+                        "property": "Id", 
+                        "value": null, 
+                        "source": "response_json"
+                    }
+                ], 
+                "scripts": [
+                    "var data = JSON.parse(response.body);\nvariables.set(\"emailFromResponse\", data.Email);\nvariables.set(\"nameFromResponse\", data.FullName);\nvariables.set(\"idFromResponse\", data.Id);"
+                ], 
+                "multipart_form": [], 
+                "before_scripts": [
+                    "var data = JSON.parse(request.body);\nvariables.set(\"passwordFromRequest\", data.Password);"
+                ], 
+                "data": "", 
+                "method": "POST"
+            }
+        ], 
+        "description": ""
+    }, 
+    {
+        "trigger_url": "https://api.runscope.com/radar/6bac26ee-ffd9-4f37-9a66-d09671598940/trigger", 
+        "name": "Create User - 201 Email already in Use", 
+        "version": "1.0", 
+        "exported_at": 1575567343, 
+        "steps": [
+            {
+                "skipped": false, 
+                "bucket_key": "0p9t7273xmp5", 
+                "trigger_token": null, 
+                "step_type": "subtest", 
+                "variables": [
+                    {
+                        "source": "response_json", 
+                        "property": "variables.emailFromResponse", 
+                        "name": "userEmail"
+                    }, 
+                    {
+                        "source": "response_json", 
+                        "property": "variables.nameFromResponse", 
+                        "name": "userFullName"
+                    }
+                ], 
+                "environment_uuid": "", 
+                "use_parent_environment": true, 
+                "note": "", 
+                "params": [], 
+                "assertions": [
+                    {
+                        "comparison": "equal", 
+                        "property": "result", 
+                        "value": "pass", 
+                        "source": "response_json"
+                    }
+                ], 
+                "scripts": [], 
+                "before_scripts": [], 
+                "test_uuid": "7df1d82b-0cf2-4259-a101-e78bcd411234"
+            }, 
+            {
+                "body": "{\r\n    \"Email\": \"{{userEmail}}\",\r\n    \"FullName\": \"{{firstName}} {{lastName}}\",\r\n    \"Password\": \"{{password}}\"\r\n}", 
+                "skipped": false, 
+                "form": {}, 
+                "url": "{{baseUrl}}user.json", 
+                "variables": [], 
+                "multipart_form": [], 
+                "step_type": "request", 
+                "auth": {}, 
+                "note": "", 
+                "headers": {}, 
+                "assertions": [
+                    {
+                        "comparison": "equal_number", 
+                        "value": "200", 
+                        "source": "response_status"
+                    }, 
+                    {
+                        "comparison": "contains", 
+                        "property": "ErrorMessage", 
+                        "value": "Account with this email address already exists", 
+                        "source": "response_json"
+                    }, 
+                    {
+                        "comparison": "contains", 
+                        "property": "ErrorCode", 
+                        "value": "201", 
+                        "source": "response_json"
+                    }
+                ], 
+                "scripts": [], 
+                "before_scripts": [], 
+                "method": "POST"
+            }
+        ], 
+        "description": ""
+    }
+] 
+
